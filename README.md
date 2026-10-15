@@ -33,7 +33,9 @@ pip install git+https://github.com/JWWHaymar/OpenFaculty.git
 openfaculty quickstart
 ```
 
-**No dependencies.** Python 3.10+, standard library only: `urllib`, `sqlite3`, `json`, `re`. There is no wheel that can fail to build, no API key to register for, no account, and no server. Every source it reads is a free public API.
+**No dependencies.** Standard library only: `urllib`, `sqlite3`, `json`, `re`. There is no wheel that can fail to build, no API key to register for, no account, and no server. Every source it reads is a free public API.
+
+Declared as Python 3.10+; **tested on 3.12 and 3.14**, each in a fresh virtualenv running the full pipeline against the live APIs. If you run it on 3.10 or 3.11 and something breaks, that is a bug worth an issue, because nobody has put those two through it.
 
 ---
 

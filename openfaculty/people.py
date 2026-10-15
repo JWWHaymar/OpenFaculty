@@ -125,9 +125,10 @@ SYNBIO_TOPICS = [
 ]
 
 # --- phage as basic biology --------------------------------------------------
-# "Basic Phage Research is fine too." The structural, genomic and
-# host-interaction work that is neither therapy nor a synbio tool -- and which
-# is closest to what the thesis actually was.
+# The structural, genomic and host-interaction work that is neither therapy nor
+# a synthetic-biology tool. A separate track because a lab here is a different
+# kind of lab from a therapy group, and conflating them makes both searches
+# worse.
 BASIC_TOPICS = [
     '(TITLE_ABS:"phage genome" OR TITLE_ABS:"phage genomics")',
     '(TITLE_ABS:"capsid assembly" OR TITLE_ABS:"portal protein")',

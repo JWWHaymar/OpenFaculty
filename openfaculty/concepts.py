@@ -102,7 +102,21 @@ class Concept:
     key: str
     label: str
     pattern: str
-    relation: str                  # evidenced | adjacent | context
+
+    # ── `relation` IS YOUR PROFILE, NOT A FACT ABOUT THE SCIENCE ────────────
+    # This is the second thing to edit after `EVIDENCED_ORGANISMS`, and the
+    # distinction matters: `pattern` says what a text IS about, `relation` says
+    # what that means FOR YOU.
+    #
+    #   evidenced  work you can document having done
+    #   adjacent   same organisms and hands, different question
+    #   context    real, named by the text, and not what you do
+    #   blocked    you have never done this, so a lab doing it is a wrong lead
+    #
+    # `blocked` on `eukaryotic_cell` is the author's boundary, not a judgement
+    # about cell biology. If you run mammalian cultures, that concept is
+    # `evidenced` for you and leaving it `blocked` will hide labs you want.
+    relation: str                  # evidenced | adjacent | context | blocked
     why: str                       # the sentence a human reads
     disqualifiers: tuple[str, ...] = ()
 
@@ -193,8 +207,8 @@ CONCEPTS: tuple[Concept, ...] = (
         r"plaque\s+assay|top\s+agar|host\s+range|efficiency\s+of\s+plating|"
         r"phage\s+cocktail|phage\s+therapy|endolysin|virulent\s+phage",
         "evidenced",
-        "Three phage positions, incl. engineered Pseudomonas cocktails at Armata; "
-        "thesis is prophage/antiphage biology.",
+        "Bench phage work: plaque assays, host range, lysogeny, therapy "
+        "cocktails. The core of the field this vocabulary was written for.",
         disqualifiers=(_PHAGE_DISPLAY, _PHAGE_VLP),
     ),
     Concept(
@@ -204,8 +218,9 @@ CONCEPTS: tuple[Concept, ...] = (
         r"cyclic\s+oligonucleotide|\bgabija\b|\bhachiman\b|phage\s+resistance|"
         r"phage\s+defen[cs]e",
         "evidenced",
-        "The thesis subject: a guanylyl cyclase bridging antiphage response "
-        "(CBASS) with cellular processes in uropathogenic E. coli.",
+        "Bacterial immunity: CBASS, retrons, restriction-modification, "
+        "toxin-antitoxin. Rarely says the word 'antiphage' and is exactly "
+        "that.",
     ),
     Concept(
         "bacterial_genetics", "bacterial genetics",
@@ -214,8 +229,8 @@ CONCEPTS: tuple[Concept, ...] = (
         r"knockout\s+(strain|librar)|bacterial\s+conjugation|suicide\s+vector|"
         r"crispri",
         "evidenced",
-        "Markerless deletions, recombineering and transposon work documented in "
-        "the ABG lab manual.",
+        "Markerless deletions, recombineering, transposon work: the hands a "
+        "phage or bacterial-genetics lab actually needs.",
     ),
     Concept(
         "amr", "antimicrobial resistance",
@@ -223,8 +238,8 @@ CONCEPTS: tuple[Concept, ...] = (
         r"multi-?drug[- ]resistan|\bmic\b|minimum\s+inhibitory|"
         r"susceptibility\s+testing|checkerboard|synergy\s+assay",
         "evidenced",
-        "AMR is the applied frame of both the thesis and the Armata phage-therapy "
-        "work.",
+        "Antimicrobial resistance: the applied frame most phage-therapy and "
+        "bacterial-defense funding sits inside.",
     ),
     Concept(
         "microbiology_bench", "general microbiology bench work",
@@ -240,15 +255,17 @@ CONCEPTS: tuple[Concept, ...] = (
         r"broth\s+microdilution|\bmic\s+(assay|testing|determination)|"
         r"plating\s+(assay|efficiency)|serial\s+dilution",
         "evidenced",
-        "Routine bacteriology throughout the thesis and lab manual.",
+        "Routine bacteriology. Necessary but not differentiating: nearly every "
+        "wet-lab microbiology group does this.",
     ),
     Concept(
         "genomics", "microbial genomics / bioinformatics",
         r"genome\s+(assembl|annotat|sequenc)|comparative\s+genomic|nanopore|"
         r"illumina|bioinformatic|\bblast\b|phylogen\w*|\bpangenom|variant\s+call",
         "adjacent",
-        "Genome assembly, annotation and comparative work are documented, though "
-        "the CV leads with bench work.",
+        "Genome assembly, annotation, comparative work. Adjacent rather than "
+        "core: a dry-lab group doing this is a different kind of lab from a "
+        "bench group.",
     ),
     Concept(
         "eukaryotic_cell", "eukaryotic cell culture",
@@ -256,8 +273,11 @@ CONCEPTS: tuple[Concept, ...] = (
         r"hela|primary\s+cells?|passag\w+\s+cells|organoid|ipsc|"
         r"flow\s+cytometr|\bfacs\b",
         "blocked",
-        "No eukaryotic cell work has ever been performed. This is a hard "
-        "boundary, not a preference.",
+        "Mammalian cell culture. Blocked HERE because this vocabulary is for "
+        "bacteriology and the author has no eukaryotic cell experience -- if "
+        "you DO, change this relation to 'evidenced'. See the note on "
+        "`relation` above: this field is your profile, not a fact about the "
+        "science.",
     ),
     Concept(
         "clinical_research", "clinical research / trials coordination",
@@ -265,15 +285,17 @@ CONCEPTS: tuple[Concept, ...] = (
         r"patient\s+(recruit|enroll)|case\s+report\s+form|\bgcp\b|study\s+coordinat|"
         r"regulatory\s+submission",
         "blocked",
-        "Not bench science. These postings are titled 'Research Associate' and "
-        "are a different profession.",
+        "Trial coordination, IRB, patient enrolment. Not bench science; a "
+        "different profession that shares job titles with one.",
     ),
     Concept(
         "phage_display_method", "phage display / antibody engineering",
         _PHAGE_DISPLAY,
         "context",
-        "Uses the word phage for an antibody method. Phage bench experience does "
-        "not particularly transfer, and claiming it would overstate.",
+        "Uses the word phage for an antibody method. Recognised so it can be "
+        "told apart from phage biology, not to score it: bench phage "
+        "experience does not particularly transfer, and claiming it would "
+        "overstate.",
     ),
 )
 
