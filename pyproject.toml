@@ -1,0 +1,36 @@
+# OpenFaculty has NO third-party dependencies, by design and not by accident.
+# Every module imports only the standard library: urllib, sqlite3, json, re,
+# html, time. That is why `dependencies` below is empty and why installation
+# cannot fail on a wheel that will not build.
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openfaculty"
+version = "1.0.0"
+description = "Find funded labs that are actually hiring, from the open scholarly record."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [{name = "JWW Haymar"}]
+keywords = ["academia", "graduate-school", "openalex", "nih-reporter", "nsf", "bioinformatics"]
+dependencies = []
+
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+
+[project.urls]
+Homepage = "https://github.com/JWWHaymar/OpenFaculty"
+Issues = "https://github.com/JWWHaymar/OpenFaculty/issues"
+
+[project.scripts]
+openfaculty = "openfaculty.cli:main"
+
+[tool.setuptools]
+packages = ["openfaculty"]

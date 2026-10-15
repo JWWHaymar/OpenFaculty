@@ -1,0 +1,26 @@
+# Build artefacts
+build/
+dist/
+*.egg-info/
+__pycache__/
+*.pyc
+
+# The local data store. It holds real people's contact details, and it is
+# fully regenerable from the public APIs, so it must never be committed.
+# Default location is ~/.openfaculty, but a user may point OPENFACULTY_HOME
+# into a checkout, and a stray commit of this file would publish a list of
+# scientists' email addresses.
+*.db
+*.db-wal
+*.db-shm
+.openfaculty/
+data/
+
+# Generated shortlists name real people. Same reason.
+notes/
+*OUTREACH - Funded labs*.md
+*PIs - PhD Targets*.md
+
+# Environments
+venv/
+.venv/
